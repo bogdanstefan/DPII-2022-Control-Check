@@ -1,5 +1,8 @@
 package acme.forms.administrator;
 
+import java.util.Collection;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,17 +30,17 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		
 		// Manage COMPONENTS
 		Integer totalNumberOfComponents;
-		Double averageRetailPriceOfComponents;
-		Double deviationRetailPriceOfComponents;
-		Double minimumRetailPriceOfComponents;
-		Double maximumRetailPriceOfComponents;
+		List<Object> averageRetailPriceOfComponents;
+		List<Object> deviationRetailPriceOfComponents;
+		List<Object> minimumRetailPriceOfComponents;
+		List<Object> maximumRetailPriceOfComponents;
 		
 		// Manage TOOLS
 		Integer totalNumberOfTools;
-		Double averageRetailPriceOfTools;
-		Double deviationRetailPriceOfTools;
-		Double minimumRetailPriceOfTools;
-		Double maximumRetailPriceOfTools;
+		List<Object> averageRetailPriceOfTools;
+		List<Object> deviationRetailPriceOfTools;
+		List<Object> minimumRetailPriceOfTools;
+		List<Object> maximumRetailPriceOfTools;
 		
 		// Manage TOTALS
 		Integer totalNumberOfProposedPatronages;
@@ -45,22 +48,30 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		Integer totalNumberOfDeniedPatronages;
 
 		// Manage PROPOSED
-		Double averageBudgetOfProposedPatronages;
-		Double deviationBudgetOfProposedPatronages;
-		Double minimumBudgetOfProposedPatronages;
-		Double maximumBudgetOfProposedPatronages;
+		List<Object> averageBudgetOfProposedPatronages;
+		List<Object> deviationBudgetOfProposedPatronages;
+		List<Object> minimumBudgetOfProposedPatronages;
+		List<Object> maximumBudgetOfProposedPatronages;
 
 		// Manage ACCEPTED
-		Double averageBudgetOfAcceptedPatronages;
-		Double deviationBudgetOfAcceptedPatronages;
-		Double minimumBudgetOfAcceptedPatronages;
-		Double maximumBudgetOfAcceptedPatronages;
+		List<Object> averageBudgetOfAcceptedPatronages;
+		List<Object> deviationBudgetOfAcceptedPatronages;
+		List<Object> minimumBudgetOfAcceptedPatronages;
+		List<Object> maximumBudgetOfAcceptedPatronages;
 
 		// Manage DENIED
-		Double averageBudgetOfDeniedPatronages;
-		Double deviationBudgetOfDeniedPatronages;
-		Double minimumBudgetOfDeniedPatronages;
-		Double maximumBudgetOfDeniedPatronages;
+		List<Object> averageBudgetOfDeniedPatronages;
+		List<Object> deviationBudgetOfDeniedPatronages;
+		List<Object> minimumBudgetOfDeniedPatronages;
+		List<Object> maximumBudgetOfDeniedPatronages;
+		
+		// Control-Check
+		Double ratioOfArtifactsWithChimpums;
+		List<Object> averageBudgetOfChimpums;
+		List<Object> deviationBudgetOfChimpums;
+		List<Object> minimumBudgetOfChimpums;
+		List<Object> maximumBudgetOfChimpums;
+		
 		
 		
 		totalNumberOfComponents = this.repository.totalNumberOfComponents();
@@ -94,6 +105,14 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		minimumBudgetOfDeniedPatronages = this.repository.minimumBudgetOfDeniedPatronages();
 		maximumBudgetOfDeniedPatronages = this.repository.maximumBudgetOfDeniedPatronages();
 		
+		// Control-Check
+		ratioOfArtifactsWithChimpums = this.repository.ratioOfArtifactsWithChimpums();
+		averageBudgetOfChimpums = this.repository.averageBudgetOfChimpums();
+		deviationBudgetOfChimpums = this.repository.deviationBudgetOfChimpums();
+		minimumBudgetOfChimpums = this.repository.minimumBudgetOfChimpums();
+		maximumBudgetOfChimpums = this.repository.maximumBudgetOfChimpums();
+		//--------------
+		
 		result = new AdministratorDashboard();
 		result.setTotalNumberOfComponents(totalNumberOfComponents);
 		result.setAverageRetailPriceOfComponents(averageRetailPriceOfComponents);
@@ -125,6 +144,14 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		result.setDeviationBudgetOfDeniedPatronages(deviationBudgetOfDeniedPatronages);
 		result.setMinimumBudgetOfDeniedPatronages(minimumBudgetOfDeniedPatronages);
 		result.setMaximumBudgetOfDeniedPatronages(maximumBudgetOfDeniedPatronages);
+		
+		// Control-Check
+		result.setRatioOfArtifactsWithChimpums(ratioOfArtifactsWithChimpums);
+		result.setAverageBudgetOfChimpums(averageBudgetOfChimpums);
+		result.setDeviationBudgetOfChimpums(deviationBudgetOfChimpums);
+		result.setMinimumBudgetOfChimpums(minimumBudgetOfChimpums);
+		result.setMaximumBudgetOfChimpums(maximumBudgetOfChimpums);
+		//--------------
 	
 		return result;
 	}
@@ -140,7 +167,8 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 									"totalNumberOfProposedPatronages","totalNumberOfAcceptedPatronages","totalNumberOfDeniedPatronages",
 									"averageBudgetOfProposedPatronages","deviationBudgetOfProposedPatronages","minimumBudgetOfProposedPatronages","maximumBudgetOfProposedPatronages",
 									"averageBudgetOfAcceptedPatronages","deviationBudgetOfAcceptedPatronages","minimumBudgetOfAcceptedPatronages","maximumBudgetOfAcceptedPatronages",
-									"averageBudgetOfDeniedPatronages","deviationBudgetOfDeniedPatronages","minimumBudgetOfDeniedPatronages","maximumBudgetOfDeniedPatronages"
+									"averageBudgetOfDeniedPatronages","deviationBudgetOfDeniedPatronages","minimumBudgetOfDeniedPatronages","maximumBudgetOfDeniedPatronages",
+									"ratioOfArtifactsWithChimpums","averageBudgetOfChimpums","deviationBudgetOfChimpums","minimumBudgetOfChimpums","maximumBudgetOfChimpums"
 									
 			);
 	}

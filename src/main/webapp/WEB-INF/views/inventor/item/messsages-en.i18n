@@ -27,3 +27,6 @@ inventor.item.form.button.create = Create
 inventor.item.form.button.update = Update
 inventor.item.form.button.delete = Delete
 inventor.item.form.button.publish = Publish
+
+inventor.item.form.label.createChimpum = Create Chimpum
+inventor.item.form.label.showChimpum = Show Chimpum

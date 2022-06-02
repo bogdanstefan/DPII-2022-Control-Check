@@ -145,6 +145,39 @@
 				code="administrator.dashboard.form.label.maximum-budget-of-denied-patronages" /></th>
 		<td><acme:print value="${maximumBudgetOfDeniedPatronages}" /></td>
 	</tr>
+	
+	<!-- CONTROL-CHECK -->
+	<tr>
+		<th scope="row" colspan="2"></th>
+		<td></td>
+	</tr>
+	
+	<tr>
+		<th scope="row" colspan="2">CONTROL-CHECK</th>
+		<td></td>
+	</tr>
+		
+	<tr>
+		<th scope="row"><acme:message code="administrator.dashboard.form.title.ratio-artifacts-with-chimpums" /></th>
+		<td><acme:print value="${ratioOfArtifactsWithChimpums}" /></td>
+	</tr>
+	<tr>
+		<th scope="row"><acme:message code="administrator.dashboard.form.title.average-budget-chimpums" /></th>
+		<td><acme:print value="${averageBudgetOfChimpums}" /></td>
+	</tr>
+	<tr>
+		<th scope="row"><acme:message code="administrator.dashboard.form.title.deviation-budget-chimpums" /></th>
+		<td><acme:print value="${deviationBudgetOfChimpums}" /></td>
+	</tr>
+	<tr>
+		<th scope="row"><acme:message code="administrator.dashboard.form.title.minimum-budget-chimpums" /></th>
+		<td><acme:print value="${minimumBudgetOfChimpums}" /></td>
+	</tr>
+	<tr>
+		<th scope="row"><acme:message code="administrator.dashboard.form.title.maximum-budget-chimpums" /></th>
+		<td><acme:print value="${maximumBudgetOfChimpums}" /></td>
+	</tr>
+
 </table>
 
 <h2>

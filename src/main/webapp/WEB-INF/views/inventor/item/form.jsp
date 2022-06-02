@@ -30,4 +30,12 @@
 	        <acme:submit code="inventor.item.form.button.create" action="/inventor/item/create"/>
 	    </jstl:when>
 	</jstl:choose>
+	<jstl:choose>
+		<jstl:when test="${command != 'create' and !hasChimpum}">
+			<acme:button code="inventor.item.form.label.createChimpum" action="/inventor/chimpum/create?itemId=${id}"/>
+		</jstl:when>
+		<jstl:when test="${command != 'create' and hasChimpum}">
+			<acme:button code="inventor.item.form.label.showChimpum" action="/inventor/chimpum/show?id=${chimpumId}"/>
+		</jstl:when>
+	</jstl:choose>
 </acme:form>
