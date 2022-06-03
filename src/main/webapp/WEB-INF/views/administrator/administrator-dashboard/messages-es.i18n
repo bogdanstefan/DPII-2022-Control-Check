@@ -46,9 +46,9 @@ administrator.dashboard.form.label.average-number-jobs-employer =  Número medio
 administrator.dashboard.form.label.average-number-applications-worker =  Número medio de solicitudes por trabajador
 administrator.dashboard.form.label.average-number-applications-employer = Número medio de solicitudes por empleador
 
-administrator.dashboard.form.title.ratio-artifacts-with-chimpums = Ratio de Items con Chimpums
-administrator.dashboard.form.title.average-budget-chimpums = Media del presupuesto de los Chimpums
-administrator.dashboard.form.title.deviation-budget-chimpums = Desviacion del presupuesto de los Chimpums
-administrator.dashboard.form.title.minimum-budget-chimpums = Minimo presupuesto de los Chimpums
-administrator.dashboard.form.title.maximum-budget-chimpums = Maximo presupuesto de los Chimpums
+administrator.dashboard.form.title.ratio-components-with-comemas = Ratio de Componentes con Comemas
+administrator.dashboard.form.title.average-income-comemas = Media de los ingresos de los Comemas
+administrator.dashboard.form.title.deviation-income-comemas = Desviacion de los ingresos de los Comemas
+administrator.dashboard.form.title.minimum-income-comemas = Mínimos ingresos de los Comemas
+administrator.dashboard.form.title.maximum-income-comemas = Máximos ingresos de los Comemas
 

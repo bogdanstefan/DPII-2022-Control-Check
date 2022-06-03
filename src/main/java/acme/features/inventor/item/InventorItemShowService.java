@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.Chimpum;
+import acme.entities.Comema;
 import acme.entities.Item;
 import acme.entities.patronage.PatronageReport;
 import acme.framework.components.models.Model;
@@ -55,10 +55,10 @@ public class InventorItemShowService implements AbstractShowService<Inventor, It
 
 		request.unbind(entity, model, "type", "name", "code", "technology", "description", "retailPrice", "link", "publish");
 		// Detect if is any chimpuns
-		List<Chimpum> chimpums = (List<Chimpum>) this.repository.itemHasAnyChimpums(entity.getId());
-		if(!chimpums.isEmpty()) {
-			model.setAttribute("hasChimpum", true);
-			model.setAttribute("chimpumId", chimpums.get(0).getId());
+		List<Comema> comemas = (List<Comema>) this.repository.itemHasAnyComemas(entity.getId());
+		if(!comemas.isEmpty()) {
+			model.setAttribute("hasComema", true);
+			model.setAttribute("comemaId", comemas.get(0).getId());
 		}
 	}
 }

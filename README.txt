@@ -18,3 +18,4 @@ account that you must link Acme-Framework-22.1 excluding the following resources
 
 - **/fragments/**
  
+ IMPORTANT: For the control check, the entity to be maintained is "COMEMA".

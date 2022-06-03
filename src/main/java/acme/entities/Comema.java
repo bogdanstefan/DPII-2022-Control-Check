@@ -27,7 +27,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class Chimpum extends AbstractEntity {
+public class Comema extends AbstractEntity {
 
 	// Serialisation identifier -----------------------------------------------
 
@@ -35,7 +35,7 @@ public class Chimpum extends AbstractEntity {
 
 	// Attributes -------------------------------------------------------------
 
-	@Pattern(regexp = "^[0-9]{6}$")
+	@Pattern(regexp = "^\\w{2}\\d{2}\\w{2}-\\d{6}$")
 	protected String			code;
 	
 	@Temporal(TemporalType.TIMESTAMP)
@@ -45,11 +45,11 @@ public class Chimpum extends AbstractEntity {
 
 	@NotBlank
 	@Length(max = 100)
-	protected String			title;
+	protected String			subject;
 
 	@NotBlank
 	@Length(max = 255)
-	protected String			description;
+	protected String			explanation;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	@NotNull
@@ -61,10 +61,10 @@ public class Chimpum extends AbstractEntity {
 
 	@NotNull
 	@Valid
-	protected Money				budget;
+	protected Money				income;
 
 	@URL
-	protected String			link;
+	protected String			moreInfo;
 
 	// Derived attributes -----------------------------------------------------
 

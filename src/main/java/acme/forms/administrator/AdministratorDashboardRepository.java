@@ -95,19 +95,19 @@ public interface AdministratorDashboardRepository extends AbstractRepository {
 	List<Object> maximumBudgetOfDeniedPatronages();
 	
 	//Control Check
-	@Query("select 1.0 * count(c)/ (select count(i) FROM Item i) from Chimpum c, Item i where i.id=c.item.id and c.item.id!=NULL")
-	Double ratioOfArtifactsWithChimpums();
+	@Query("select 1.0 * count(c)/ (select count(i) FROM Item i) from Comema c, Item i where i.id=c.item.id and c.item.type = 'COMPONENT' and c.item.id!=NULL")
+	Double ratioOfComponentsWithComemas();
 	
-	@Query("select c.budget.currency, avg(c.budget.amount) from Chimpum c group by c.budget.currency")
-	List<Object> averageBudgetOfChimpums();
+	@Query("select c.income.currency, avg(c.income.amount) from Comema c group by c.income.currency")
+	List<Object> averageIncomeOfComemas();
 
-	@Query("select c.budget.currency, stddev(c.budget.amount) from Chimpum c group by c.budget.currency")
-	List<Object> deviationBudgetOfChimpums();
+	@Query("select c.income.currency, stddev(c.income.amount) from Comema c group by c.income.currency")
+	List<Object> deviationIncomeOfComemas();
 
-	@Query("select c.budget.currency, min(c.budget.amount) from Chimpum c group by c.budget.currency")
-	List<Object> minimumBudgetOfChimpums();
+	@Query("select c.income.currency, min(c.income.amount) from Comema c group by c.income.currency")
+	List<Object> minimumIncomeOfComemas();
 
-	@Query("select c.budget.currency, max(c.budget.amount) from Chimpum c group by c.budget.currency")
-	List<Object> maximumBudgetOfChimpums();
+	@Query("select c.income.currency, max(c.income.amount) from Comema c group by c.income.currency")
+	List<Object> maximumIncomeOfComemas();
 	
 }

@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import acme.entities.Chimpum;
+import acme.entities.Comema;
 import acme.entities.Item;
 import acme.entities.ItemType;
 import acme.entities.Quantity;
@@ -45,7 +45,7 @@ public interface InventorItemRepository extends AbstractRepository {
 	@Query("select distinct q from Item i, Quantity q where i.id = q.item.id and i.id = :id")
 	Collection<Quantity> findAllQuantitiesByItem(int id);
 
-	@Query("select c from Chimpum c where c.item.id = :id")
-	Collection<Chimpum> itemHasAnyChimpums(int id);
+	@Query("select c from Comema c where c.item.id = :id")
+	Collection<Comema> itemHasAnyComemas(int id);
 
 }

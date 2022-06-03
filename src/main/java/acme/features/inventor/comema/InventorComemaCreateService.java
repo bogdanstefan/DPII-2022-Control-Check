@@ -1,4 +1,4 @@
-package acme.features.inventor.chimpum;
+package acme.features.inventor.comema;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -11,7 +11,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.Chimpum;
+import acme.entities.Comema;
 import acme.entities.Item;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
@@ -21,13 +21,13 @@ import acme.framework.services.AbstractCreateService;
 import acme.roles.Inventor;
 
 @Service
-public class InventorChimpumCreateService implements AbstractCreateService<Inventor, Chimpum> {
+public class InventorComemaCreateService implements AbstractCreateService<Inventor, Comema> {
 	
 	@Autowired
-	protected InventorChimpumRepository repository;
+	protected InventorComemaRepository repository;
 	
 	@Override
-	public boolean authorise(final Request<Chimpum> request) {
+	public boolean authorise(final Request<Comema> request) {
 		assert request != null;
 		
 		boolean result;
@@ -38,33 +38,33 @@ public class InventorChimpumCreateService implements AbstractCreateService<Inven
 	}
 
 	@Override
-	public void bind(final Request<Chimpum> request, final Chimpum entity, final Errors errors) {
+	public void bind(final Request<Comema> request, final Comema entity, final Errors errors) {
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
 		 
-		request.bind(entity, errors, "code", "title", "description", "startPeriod", "finishPeriod", "budget", "link");
+		request.bind(entity, errors, "code", "subject", "explanation", "startPeriod", "finishPeriod", "income", "moreInfo");
 	}
 
 	@Override
-	public void unbind(final Request<Chimpum> request, final Chimpum entity, final Model model) {
+	public void unbind(final Request<Comema> request, final Comema entity, final Model model) {
 		assert request != null;
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "code", "creationMoment", "title", "description", "startPeriod", "finishPeriod", "budget", "link");		
+		request.unbind(entity, model, "code", "subject", "explanation", "startPeriod", "finishPeriod", "income", "moreInfo");		
 		model.setAttribute("itemId", entity.getItem().getId());
 	}
 	
 	@Override
-	public Chimpum instantiate(final Request<Chimpum> request) {
+	public Comema instantiate(final Request<Comema> request) {
 		assert request != null;
 		
-		Chimpum result;
+		Comema result;
 		Item item;
 		int itemId;
 		
-		result = new Chimpum();
+		result = new Comema();
 		
 		// Manage unique code
 		String code = "";
@@ -83,7 +83,7 @@ public class InventorChimpumCreateService implements AbstractCreateService<Inven
 	}
 	
 	@Override
-	public void validate(final Request<Chimpum> request, final Chimpum entity, final Errors errors) {
+	public void validate(final Request<Comema> request, final Comema entity, final Errors errors) {
 		assert request != null;
 		assert entity != null;
 		assert errors != null;		
@@ -92,7 +92,7 @@ public class InventorChimpumCreateService implements AbstractCreateService<Inven
 
 			calendar = new GregorianCalendar();
 			calendar.add(Calendar.MONTH, 1);
-			errors.state(request, entity.getStartPeriod().after(calendar.getTime()), "startPeriod", "inventor.chimpum.form.error.too-close-start-period");
+			errors.state(request, entity.getStartPeriod().after(calendar.getTime()), "startPeriod", "inventor.comema.form.error.too-close-start-period");
 		}
 		if (!errors.hasErrors("finishPeriod")) {
 			Calendar calendar;
@@ -101,10 +101,10 @@ public class InventorChimpumCreateService implements AbstractCreateService<Inven
 			calendar.setTime(entity.getStartPeriod());
 			calendar.add(Calendar.DAY_OF_MONTH, 7);
 			finish = calendar.getTime();
-			errors.state(request, entity.getFinishPeriod().after(finish), "finishPeriod", "inventor.chimpum.form.error.one-week");
+			errors.state(request, entity.getFinishPeriod().after(finish), "finishPeriod", "inventor.comema.form.error.one-week");
 		}
-		if(!errors.hasErrors("budget")) {
-			final String upperCaseCurrency = entity.getBudget().getCurrency().toUpperCase();
+		if(!errors.hasErrors("income")) {
+			final String upperCaseCurrency = entity.getIncome().getCurrency().toUpperCase();
 			boolean accepted = false;
 			
 			// Manage likely currencies
@@ -114,13 +114,13 @@ public class InventorChimpumCreateService implements AbstractCreateService<Inven
 					break;
 				}
 			}
-			errors.state(request, entity.getBudget().getAmount() > 0, "budget", "inventor.chimpum.form.error.negative-budget");
-			errors.state(request, accepted, "budget", "inventor.chimpum.form.error.non-accepted-currency");
+			errors.state(request, entity.getIncome().getAmount() > 0, "income", "inventor.comema.form.error.negative-budget");
+			errors.state(request, accepted, "income", "inventor.comema.form.error.non-accepted-currency");
 		}
 	}
 			
 	@Override
-	public void create(final Request<Chimpum> request, final Chimpum entity) {
+	public void create(final Request<Comema> request, final Comema entity) {
 		assert request != null;
 		assert entity != null;
 		
@@ -131,6 +131,43 @@ public class InventorChimpumCreateService implements AbstractCreateService<Inven
 	
 	
 	// Other business methods -------------------------
+	
+		public String numbersSecuency() {
+	
+			final char[] elementos = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+	
+			final char[] conjunto = new char[2];
+	
+			final String secuency;
+	
+			for (int i = 0; i < 2; i++) {
+				final int el = (int) (Math.random() * 9);
+				conjunto[i] = elementos[el];
+			}
+	
+			secuency = new String(conjunto);
+			return secuency;
+	
+		}
+		
+		public String lettersSecuency() {
+
+			final char[] elementos = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q',
+					'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
+
+			final char[] conjunto = new char[2];
+
+			final String secuency;
+
+			for (int i = 0; i < 2; i++) {
+				final int el = (int) (Math.random() * 25);
+				conjunto[i] = elementos[el];
+			}
+
+			secuency = new String(conjunto).toUpperCase();
+			return secuency;
+
+		}
 
 		public String createCode() {
 
@@ -153,7 +190,7 @@ public class InventorChimpumCreateService implements AbstractCreateService<Inven
 			else
 				day = String.valueOf(calendar.get(Calendar.DAY_OF_MONTH));
 
-			code =  year + month + day ;
+			code = lettersSecuency() + numbersSecuency() + lettersSecuency() + "-" + month + day + year ;
 
 			return code;
 

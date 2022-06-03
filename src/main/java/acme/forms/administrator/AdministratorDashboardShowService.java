@@ -66,11 +66,11 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		List<Object> maximumBudgetOfDeniedPatronages;
 		
 		// Control-Check
-		Double ratioOfArtifactsWithChimpums;
-		List<Object> averageBudgetOfChimpums;
-		List<Object> deviationBudgetOfChimpums;
-		List<Object> minimumBudgetOfChimpums;
-		List<Object> maximumBudgetOfChimpums;
+		Double ratioOfComponentsWithComemas;
+		List<Object> averageIncomeOfComemas;
+		List<Object> deviationIncomeOfComemas;
+		List<Object> minimumIncomeOfComemas;
+		List<Object> maximumIncomeOfComemas;
 		
 		
 		
@@ -106,11 +106,11 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		maximumBudgetOfDeniedPatronages = this.repository.maximumBudgetOfDeniedPatronages();
 		
 		// Control-Check
-		ratioOfArtifactsWithChimpums = this.repository.ratioOfArtifactsWithChimpums();
-		averageBudgetOfChimpums = this.repository.averageBudgetOfChimpums();
-		deviationBudgetOfChimpums = this.repository.deviationBudgetOfChimpums();
-		minimumBudgetOfChimpums = this.repository.minimumBudgetOfChimpums();
-		maximumBudgetOfChimpums = this.repository.maximumBudgetOfChimpums();
+		ratioOfComponentsWithComemas = this.repository.ratioOfComponentsWithComemas();
+		averageIncomeOfComemas = this.repository.averageIncomeOfComemas();
+		deviationIncomeOfComemas = this.repository.deviationIncomeOfComemas();
+		minimumIncomeOfComemas = this.repository.minimumIncomeOfComemas();
+		maximumIncomeOfComemas = this.repository.maximumIncomeOfComemas();
 		//--------------
 		
 		result = new AdministratorDashboard();
@@ -146,11 +146,11 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		result.setMaximumBudgetOfDeniedPatronages(maximumBudgetOfDeniedPatronages);
 		
 		// Control-Check
-		result.setRatioOfArtifactsWithChimpums(ratioOfArtifactsWithChimpums);
-		result.setAverageBudgetOfChimpums(averageBudgetOfChimpums);
-		result.setDeviationBudgetOfChimpums(deviationBudgetOfChimpums);
-		result.setMinimumBudgetOfChimpums(minimumBudgetOfChimpums);
-		result.setMaximumBudgetOfChimpums(maximumBudgetOfChimpums);
+		result.setRatioOfComponentsWithComemas(ratioOfComponentsWithComemas);
+		result.setAverageIncomeOfComemas(averageIncomeOfComemas);
+		result.setDeviationIncomeOfComemas(deviationIncomeOfComemas);
+		result.setMinimumIncomeOfComemas(minimumIncomeOfComemas);
+		result.setMaximumIncomeOfComemas(maximumIncomeOfComemas);
 		//--------------
 	
 		return result;
@@ -168,7 +168,7 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 									"averageBudgetOfProposedPatronages","deviationBudgetOfProposedPatronages","minimumBudgetOfProposedPatronages","maximumBudgetOfProposedPatronages",
 									"averageBudgetOfAcceptedPatronages","deviationBudgetOfAcceptedPatronages","minimumBudgetOfAcceptedPatronages","maximumBudgetOfAcceptedPatronages",
 									"averageBudgetOfDeniedPatronages","deviationBudgetOfDeniedPatronages","minimumBudgetOfDeniedPatronages","maximumBudgetOfDeniedPatronages",
-									"ratioOfArtifactsWithChimpums","averageBudgetOfChimpums","deviationBudgetOfChimpums","minimumBudgetOfChimpums","maximumBudgetOfChimpums"
+									"ratioOfComponentsWithComemas","averageIncomeOfComemas","deviationIncomeOfComemas","minimumIncomeOfComemas","maximumIncomeOfComemas"
 									
 			);
 	}

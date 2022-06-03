@@ -31,11 +31,11 @@
 	    </jstl:when>
 	</jstl:choose>
 	<jstl:choose>
-		<jstl:when test="${command != 'create' and !hasChimpum}">
-			<acme:button code="inventor.item.form.label.createChimpum" action="/inventor/chimpum/create?itemId=${id}"/>
+		<jstl:when test="${command != 'create' and !hasComema}">
+			<acme:button code="inventor.item.form.label.createComema" action="/inventor/comema/create?itemId=${id}"/>
 		</jstl:when>
-		<jstl:when test="${command != 'create' and hasChimpum}">
-			<acme:button code="inventor.item.form.label.showChimpum" action="/inventor/chimpum/show?id=${chimpumId}"/>
+		<jstl:when test="${command != 'create' and hasComema}">
+			<acme:button code="inventor.item.form.label.showComema" action="/inventor/comema/show?id=${comemaId}"/>
 		</jstl:when>
 	</jstl:choose>
 </acme:form>
